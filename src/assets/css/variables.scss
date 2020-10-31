@@ -1,0 +1,32 @@
+
+// variables
+$background-color: #f8f8f8;
+:root{
+  --row-height: 50px;
+}
+$row-height: 50px;
+.parent-grid{
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: $row-height $row-height $row-height;
+  background-color: red;
+  grid-gap: 1px;
+  border: 1px solid red;
+  >div{
+  background-color: skyblue;
+}
+}
+.child-grid{
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: $row-height;
+  background-color: blue;
+  grid-gap: 1px;
+  //line-height: 50px;
+  >div{
+    background-color: #c0ccda;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<ul id="_ul">
+  <li>1</li>
+  <li>2</li>
+  <li>4</li>
+  <li>5</li>
+  <li>7</li>
+</ul>
+<div id="xxx" style="height: 50px; background-color:red;">xxxx</div>
+</body>
+<script>
+  // ul.addEventListener('click', function (e) {
+  //   console.log(e,e.target)
+  //   if (e.target.tagName.toLowerCase() === 'li') {
+  //     console.log('打印')  // 模拟fn
+  //   }
+  // })
+  let ul = document.querySelector('#_ul')
+  console.log(ul)
+  ul.addEventListener('click',function(e){
+    console.log(e, e.target)
+    if (e.target.tagName.toLowerCase() === 'li'){
+      console.log('>>>>>>>>>>>>')
+    }
+  })
+
+  let xxx = document.querySelector('#xxx')
+  var dragging = false
+  var position = null
+
+  xxx.addEventListener('mousedown',function(e){
+    console.log('xxx')
+    dragging = true
+    position = [e.clientX, e.clientY]
+  })
+
+
+  xxx.addEventListener('mousemove', function(e){
+    console.log('mousemove')
+    if(dragging === false) return null
+    const x = e.clientX
+    const y = e.clientY
+    const deltaX = x - position[0]
+    const deltaY = y - position[1]
+    const left = parseInt(xxx.style.left || 0)
+    const top = parseInt(xxx.style.top || 0)
+    xxx.style.left = left + deltaX + 'px'
+    xxx.style.top = top + deltaY + 'px'
+    position = [x, y]
+  })
+  xxx.addEventListener('mouseup', function(e){
+    dragging = false
+  })
+
+
+</script>
+</html>
